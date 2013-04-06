@@ -8,13 +8,13 @@ Installation
 ------------
 
 To install the gem, run the following command:
-
- gem install maniaplanet-rpc
-
+```
+gem install maniaplanet-rpc
+```
 Or if you are using a Gemfile:
-
- gem 'maniaplanet-rpc'
-
+```
+gem 'maniaplanet-rpc'
+```
 Usage
 -----
 
