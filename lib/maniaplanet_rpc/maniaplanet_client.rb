@@ -2,7 +2,7 @@ require 'xmlrpc/client'
 
 class ManiaplanetClient < XMLRPC::Client
 
-  attr_accessor :request_handle, :ip, :port
+  attr_accessor :request_handle, :ip, :port, :protocol
 
   def initialize(ip, port)
     @request_handle = 0x80000000
