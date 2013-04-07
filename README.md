@@ -23,7 +23,7 @@ First, ensure that you have XML-RPC activated in your maniaplanet server. Assumi
 require 'maniaplanet_rpc'
 
 client = ManiaplanetClient.new "127.0.0.1", 5000
-puts client.call("system.listMethods")
+puts client.call "system.listMethods"
 ```
 
 Under the hood it uses the standard ruby xml-rpc implementation, for a reference, see [Ruby Docs]
@@ -34,7 +34,7 @@ Under the hood it uses the standard ruby xml-rpc implementation, for a reference
 Issues
 ------
 
-The gem currently does not handle asynchronous requests.
+The gem currently does not handle asynchronous requests or callbacks.
 
 Credits
 -------
