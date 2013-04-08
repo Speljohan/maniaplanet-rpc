@@ -72,9 +72,8 @@ class ManiaplanetClient < XMLRPC::Client
       end
 
       if @request_handle - 0x80000000 != receive_handle
-        # TODO: Add support for callbacks here.
+        # TODO: Rewrite to support callbacks (persistent connection required?)
       end
-
 
       break if @request_handle - 0x80000000 == receive_handle
     end
@@ -91,13 +90,15 @@ class ManiaplanetClient < XMLRPC::Client
     socket.write bytes
   end
 
-  def do_rpc(request, async) # TODO: Handle async requests
+  def do_rpc(request, async)
     if async
-      Thread.new do
+      Thread.new do # Dirty, pending rewrite to support callbacks for async calls?
         sock = new_socket ip, port
         write_request sock, request
         read_response sock
       end
+      "<?xml version='1.0' encoding='UTF-8'?><methodResponse><params><param><value><struct><member><name>Code</name>
+      <value>Async</value></member></struct></value></param></params></methodResponse>" # Dummy response
     else
       sock = new_socket ip, port
       write_request sock, request
