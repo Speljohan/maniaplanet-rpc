@@ -23,21 +23,19 @@ First, ensure that you have XML-RPC activated in your maniaplanet server. Assumi
 require 'maniaplanet_rpc'
 
 client = ManiaplanetClient.new "127.0.0.1", 5000
-puts client.call "system.listMethods"
+client.call "EnableCallbacks", true # Anonymous call (no response)
+client.call "GetStatus" do |response| # Handle the response
+  puts response
+end
 ```
-
-Under the hood it uses the standard ruby xml-rpc implementation, for a reference, see [Ruby Docs]
-
-[Ruby Docs]: http://www.ruby-doc.org/stdlib-2.0/libdoc/xmlrpc/rdoc/XMLRPC/Client.html
-
 
 Issues
 ------
 
-The gem currently does not handle asynchronous requests or callbacks.
+The gem currently does not handle callbacks.
 
 Credits
 -------
 
-Johan Ljungberg - Initial implementation.
-Nadeo - Providing the awesome platform and games.
+Johan Ljungberg - Initial implementation
+Nadeo - Providing the awesome platform and games
