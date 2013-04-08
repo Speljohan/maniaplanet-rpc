@@ -32,7 +32,6 @@ class ManiaplanetClient < XMLRPC::Client
     else
       raise Exception, "Unknown protocol version!"
     end
-    puts "Handshake Complete"
   end
 
   def read_response(socket)
@@ -93,9 +92,17 @@ class ManiaplanetClient < XMLRPC::Client
   end
 
   def do_rpc(request, async) # TODO: Handle async requests
-    sock = new_socket ip, port
-    write_request sock, request
-    read_response sock
+    if async
+      Thread.new do
+        sock = new_socket ip, port
+        write_request sock, request
+        read_response sock
+      end
+    else
+      sock = new_socket ip, port
+      write_request sock, request
+      read_response sock
+    end
   end
 
 end
