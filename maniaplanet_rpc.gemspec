@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'maniaplanet-rpc'
-  s.version     = '0.0.4'
+  s.version     = '0.1.0'
   s.date        = '2013-04-06'
   s.summary     = "A library for interfacing with maniaplanet servers."
   s.description = "maniaplanet-rpc is a library for interfacing with maniaplanet servers using their custom variant of xml-rpc"
