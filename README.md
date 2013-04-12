@@ -28,11 +28,11 @@ client.call "GetStatus" do |response| # Handle the response
   puts response
 end
 
-client.on "TrackMania.PlayerChat" do |message| do # Handle a callback
+client.on "TrackMania.PlayerChat" do |message| # Handle a callback
   puts "Someone said something!"
 end
 
-client.all do |message| do # Handle all callbacks
+client.all do |message| # Handle all callbacks
   puts "Callback: #{message}"
 end
 ```
