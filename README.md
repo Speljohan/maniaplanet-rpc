@@ -22,17 +22,25 @@ First, ensure that you have XML-RPC activated in your maniaplanet server. Assumi
 ```ruby
 require 'maniaplanet_rpc'
 
-client = ManiaplanetClient.new "127.0.0.1", 5000
+client = ManiaRPC::ManiaClient.new "127.0.0.1", 5000
 client.call "EnableCallbacks", true # Anonymous call (no response)
 client.call "GetStatus" do |response| # Handle the response
   puts response
+end
+
+client.on "TrackMania.PlayerChat" do |message| do # Handle a callback
+  puts "Someone said something!"
+end
+
+client.all do |message| do # Handle all callbacks
+  puts "Callback: #{message}"
 end
 ```
 
 Issues
 ------
 
-The gem currently does not handle callbacks.
+None currently known. Report on the issue tracker if you find any!
 
 Credits
 -------
